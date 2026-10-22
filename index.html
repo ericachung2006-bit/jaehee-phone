@@ -1376,6 +1376,7 @@
 
   <!-- 隐藏的音频播放器 -->
   <audio id="audioPlayer"></audio>
+  <audio id="callBgm" src="music/call-bgm.mp3" loop></audio>
 
 </div>
 
@@ -1677,6 +1678,12 @@
   }
 
   function startCall() {
+    const bgm = document.getElementById('callBgm');
+    if (bgm) {
+      bgm.currentTime = 0;
+      bgm.play().catch(e => console.log("请确保背景音乐文件存在"));
+    }
+
     document.getElementById('phone-list-page').style.display = 'none';
     document.getElementById('call-screen').classList.add('active');
     document.getElementById('globalTime').style.color = '#fff';
@@ -1702,38 +1709,38 @@
     const captionText = document.getElementById('caption-text');
     
     const script = [
-      { name: '栽禧', text: '喂喂？', delay: 1500 },
-      { name: '陆', text: '哦，在这个时间打电话。很少见呢。', delay: 2500 },
-      { name: '栽禧', text: '为什么？', delay: 2000 },
-      { name: '陆', text: '不是在上班吗', delay: 2000 },
-      { name: '栽禧', text: '比起这个，今天有什么减肥计划吗？', delay: 3000 },
-      { name: '陆', text: '哈哈，减肥计划每天都在进行着喔', delay: 3000 },
-      { name: '栽禧', text: '今天停一下吧？', delay: 2200 },
-      { name: '陆', text: '栽禧觉得我会听你说话吗？', delay: 2800 },
-      { name: '栽禧', text: '嗯哼，当然啊。', delay: 2200 },
-      { name: '陆', text: '我是这么没志气的人吗？', delay: 2800 },
-      { name: '栽禧', text: '不，说实话不知道为什么哥要减肥，哥一点都不胖啊', delay: 3500 },
-      { name: '陆', text: '嗯哼哼', delay: 1800 },
-      { name: '栽禧', text: '哥瘦得摸腰都能十指紧握了。', delay: 3000 },
-      { name: '陆', text: '说什么话呢，听起来有点糟糕。', delay: 3000 },
-      { name: '栽禧', text: '今天晚上一起做点运动，那就减肥了嘛。', delay: 3500 },
-      { name: '陆', text: '你为什么说话一副闷骚的样子.......', delay: 3000 },
-      { name: '栽禧', text: '哥也不是第一天认识我了。十几年前已经是这样了啊。', delay: 3800 },
-      { name: '陆', text: '现在正穿着西装吗？', delay: 2500 },
-      { name: '栽禧', text: '是啊。', delay: 1800 },
-      { name: '陆', text: '听起来更糟糕了。', delay: 2500 },
-      { name: '栽禧', text: '总之今天不要减肥了。在家好好等着吧。', delay: 3500 },
-      { name: '陆', text: '你不会是准备了惊喜之类的吧？', delay: 3000 },
-      { name: '栽禧', text: '啊，被发现了。', delay: 2200 },
-      { name: '陆', text: '所以在干嘛呢。', delay: 2500 },
-      { name: '栽禧', text: '去买蛋糕吃。今天提早下班了，嘿嘿，现在正在回家的路上呢。', delay: 4000 },
-      { name: '陆', text: '这么早？小冻还没有放学啊。', delay: 3000 },
-      { name: '栽禧', text: '啊，那一起去接小冻放学吧？', delay: 3000 },
-      { name: '陆', text: '呵呵，她绝对会一副嫌弃的样子。', delay: 3000 },
-      { name: '栽禧', text: '那哥，我买好蛋糕就来找你哦。', delay: 3000 },
-      { name: '陆', text: '我要草莓味道的。', delay: 2500 },
-      { name: '栽禧', text: '早就想好了。', delay: 2200 },
-      { name: '陆', text: '嘻嘻。等你喔！', delay: 2500 }
+      { name: '栽禧', text: '喂喂？', delay: 1200 },
+      { name: '陆', text: '哦，在这个时间打电话。很少见呢。', delay: 2000 },
+      { name: '栽禧', text: '为什么？', delay: 1400 },
+      { name: '陆', text: '不是在上班吗', delay: 1500 },
+      { name: '栽禧', text: '比起这个，今天有什么减肥计划吗？', delay: 2200 },
+      { name: '陆', text: '哈哈，减肥计划每天都在进行着喔', delay: 2200 },
+      { name: '栽禧', text: '今天停一下吧？', delay: 1600 },
+      { name: '陆', text: '栽禧觉得我会听你说话吗？', delay: 2000 },
+      { name: '栽禧', text: '嗯哼，当然啊。', delay: 1600 },
+      { name: '陆', text: '我是这么没志气的人吗？', delay: 2000 },
+      { name: '栽禧', text: '不，说实话不知道为什么哥要减肥，哥一点都不胖啊', delay: 2500 },
+      { name: '陆', text: '嗯哼哼', delay: 1300 },
+      { name: '栽禧', text: '哥瘦得摸腰都能十指紧握了。', delay: 2200 },
+      { name: '陆', text: '说什么话呢，听起来有点糟糕。', delay: 2200 },
+      { name: '栽禧', text: '今天晚上一起做点运动，那就减肥了嘛。', delay: 2400 },
+      { name: '陆', text: '你为什么说话一副闷骚的样子.......', delay: 2200 },
+      { name: '栽禧', text: '哥也不是第一天认识我了。十几年前已经是这样了啊。', delay: 2500 },
+      { name: '陆', text: '现在正穿着西装吗？', delay: 1800 },
+      { name: '栽禧', text: '是啊。', delay: 1300 },
+      { name: '陆', text: '听起来更糟糕了。', delay: 1800 },
+      { name: '栽禧', text: '总之今天不要减肥了。在家好好等着吧。', delay: 2400 },
+      { name: '陆', text: '你不会是准备了惊喜之类的吧？', delay: 2200 },
+      { name: '栽禧', text: '啊，被发现了。', delay: 1600 },
+      { name: '陆', text: '所以在干嘛呢。', delay: 1800 },
+      { name: '栽禧', text: '去买蛋糕吃。今天提早下班了，嘿嘿，现在正在回家的路上呢。', delay: 2500 },
+      { name: '陆', text: '这么早？小冻还没有放学啊。', delay: 2200 },
+      { name: '栽禧', text: '啊，那一起去接小冻放学吧？', delay: 2200 },
+      { name: '陆', text: '呵呵，她绝对会一副嫌弃的样子。', delay: 2200 },
+      { name: '栽禧', text: '那哥，我买好蛋糕就来找你哦。', delay: 2200 },
+      { name: '陆', text: '我要草莓味道的。', delay: 1800 },
+      { name: '栽禧', text: '早就想好了。', delay: 1600 },
+      { name: '陆', text: '嘻嘻。等你喔！', delay: 1800 }
     ];
 
     callFlowTimeouts.forEach(clearTimeout);
@@ -1753,6 +1760,12 @@
   }
 
   function endCall() {
+    const bgm = document.getElementById('callBgm');
+    if (bgm) {
+      bgm.pause();
+      bgm.currentTime = 0;
+    }
+
     if (callTimerInterval) clearInterval(callTimerInterval);
     callFlowTimeouts.forEach(clearTimeout);
     document.getElementById('live-caption').classList.remove('show');
@@ -1922,7 +1935,7 @@
   const memoData = [
     {
       title: "幸福生活1",
-      content: "幸福生活就是纪录美好的意思。今天买了二手裤子。真的没想到裤子竟然那么合身。太高兴了，赶紧到二手网站给人留言赞赏。那个卖家回复我讯息了。忘记陆和我的账号相通的，结果他也收到讯息了。是骂我的讯息，呃呃...... 说什么「我为了钱卖掉这条裤子已经很难过了，你还要刺激我」的。完全是收到了大大的打击...... 可是陆在晚上温柔地给我买了一条新的裤子。和二手裤子的版型很像，甚至更好看。感动得要死了。他怎么这么知道我的心呀。",
+      content: "幸福生活就是纪录美好的意思。今天买了二手裤子。真的没想到裤子竟然那么合身。太高兴了，赶紧到二手网站给人留言赞赏。忘记陆和我的账号相通的，结果他也收到讯息了。是骂我的讯息，呃呃...... 说什么「我为了钱卖掉这条裤子已经很难过了，你还要刺激我」的。完全是收到了大大的打击...... 可是陆在晚上温柔地给我买了一条新的裤子。和二手裤子的版型很像，甚至更好看。感动得要死了。他怎么这么知道我的心呀。",
       date: "2026年10月16日",
       pinned: true
     },
@@ -1934,7 +1947,7 @@
     },
     {
       title: "幸福生活 3",
-      content: "陆一直给我泼买东西的网址。不知道为什么，他最近想买的东西也太多了。家里每个角落都有一个两个箱子。我记得以前看过。突然爆发的购物欲可能是压力过大。我不禁沉思陆是否压力太大了。是因为小冻吗？也可能是升学的原因。啊啊，难道都把辛苦吞在肚子里了吗？作为伴侣，怎么可以没有发现呢。陆想要的都要给他买才行啊。再和他做更多的深夜运动好了。\n\n（这是陆酱在栽禧手机留下的便利贴）我就只是突然想买东西而已。但是，最后一句单纯是你自己想吧？？",
+      content: "陆一直给我泼买东西的网址。不知道为什么，他最近想买的东西也太多了。家里每个角落都有一个两个箱子。我记得以前看过。突然爆发的购物欲可能是压力过大。我不仅沉思陆是否压力太大了。是因为小冻吗？也可能是升学的原因。啊啊，难道都把辛苦吞在肚子里了吗？作为伴侣，怎么可以没有发现呢。陆想要的都要给他买才行啊。再和他做更多的深夜运动好了。\n\n（这是陆酱在栽禧手机留下的便利贴）我就只是突然想买东西而已。但是，最后一句单纯是你自己想吧？？",
       date: "2026年10月15日",
       pinned: true
     },
